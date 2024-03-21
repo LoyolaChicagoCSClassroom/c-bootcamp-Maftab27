@@ -1,9 +1,31 @@
-// int_stack.c
-
 #include "int_stack.h"
-
-#include <stdlib.h>
 #include <stdio.h>
+
+int main() {
+    // Create a stack
+    int_stack_t stack;
+    int_stack_init(&stack, 10);
+
+    // Push some elements onto the stack
+    int_stack_push(&stack, 5);
+    int_stack_push(&stack, 10);
+    int_stack_push(&stack, 15);
+
+    // Print the contents of the stack
+    printf("Stack contents:\n");
+    int_stack_print(&stack, stdout);
+
+    // Pop an element from the stack
+    int top_value;
+    int_stack_pop(&stack, &top_value);
+    printf("Popped value: %d\n", top_value);
+
+    // Print the updated contents of the stack
+    printf("Stack contents after popping:\n");
+    int_stack_print(&stack, stdout);
+
+    return 0;
+}
 
 void int_stack_init(int_stack_t *stk, int capacity) {
     SLIST_INIT(&stk->head);
